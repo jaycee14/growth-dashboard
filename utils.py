@@ -1,6 +1,4 @@
 import pandas as pd
-from langchain_core.prompts import PromptTemplate
-
 
 def get_data():
     return pd.read_excel('labourproductivityitls.xls',sheet_name='Productivity Hours', skiprows=4)
@@ -14,24 +12,5 @@ def prep_data(data,level):
 
     return data_re_org
 
-def create_prompt():    
-    template = """
-    <|begin_of_text|>
-    <|start_header_id|>system<|end_header_id|>
-    {system}
-    <|eot_id|>
-    <|start_header_id|>user<|end_header_id|>
-    {user}
-    <|eot_id|>
-    <|start_header_id|>assistant<|end_header_id|>
-    """
-
-    # Added prompt template
-    prompt = PromptTemplate(
-        input_variables=["system", "user"],
-        template=template
-    )
-
-    return prompt
 
 
